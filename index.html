@@ -1,0 +1,356 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBFBF8">
+<title>duck_math — رياضيات الثالث الإعدادي، خطوة بخطوة</title>
+<meta name="description" content="duck_math: محرّك رياضي دقيق يحلّ مسائل رياضيات الصف الثالث الإعدادي (المنهاج السوري) خطوة بخطوة مع التحقّق، داخل متصفحك، مجانًا وبلا خادم.">
+<link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23FBFBF8'/%3E%3Cpath d='M30 62V32C30 24 36 18 44 18C52 18 58 24 58 32C58 40 52 46 44 46V62Z' fill='%23E3270E'/%3E%3Cpath d='M56 28L64 33L56 38Z' fill='%23E3270E'/%3E%3Ccircle cx='49' cy='29' r='2.5' fill='%23FBFBF8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+<noscript><div class="noscript">هذا الموقع يحتاج تفعيل جافاسكربت ليعمل المحرّك الرياضي.</div></noscript>
+<div class="bg-grid" data-par="0.05" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#home" aria-label="الرئيسية">
+      <span class="brand-mark" data-duck></span>
+      <span class="brand-t"><b data-sitename>duck_math</b><small class="mono">MATH·G9·SY</small></span>
+    </a>
+    <nav class="nav-links" aria-label="التنقل">
+      <a href="#solve"><span class="n mono">01</span>حلّ</a>
+      <a href="#lab"><span class="n mono">02</span>المختبر</a>
+      <a href="#curriculum"><span class="n mono">03</span>المنهاج</a>
+      <a href="#notebook"><span class="n mono">04</span>الدفتر</a>
+      <a href="#assistant"><span class="n mono">05</span>المساعد</a>
+    </nav>
+    <div class="nav-act">
+      <button class="icon-btn" id="soundBtn" aria-label="الصوت" aria-pressed="false"></button>
+      <a class="btn btn-primary btn-sm nav-cta" href="#solve">ابدأ الحل</a>
+      <button class="icon-btn" id="navToggle" aria-label="القائمة" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="nav-menu" id="navMenu">
+  <a href="#solve"><span class="n mono">01</span>حلّ بخطوات</a>
+  <a href="#lab"><span class="n mono">02</span>مختبر الدوال</a>
+  <a href="#curriculum"><span class="n mono">03</span>منهاج الثالث الإعدادي</a>
+  <a href="#notebook"><span class="n mono">04</span>دفتر الحلول</a>
+  <a href="#assistant"><span class="n mono">05</span>المساعد</a>
+  <a class="btn btn-primary" href="#solve">ابدأ الحل الآن</a>
+</div>
+
+<main id="mainView">
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <p class="kicker reveal">SYRIAN GRADE 9 · شبكة سويسرية</p>
+    <h1 class="reveal" style="--d:60ms">الجواب مهم.<br><span class="red">الخُطوات أهم.</span></h1>
+    <p class="lead reveal" style="--d:130ms"><b data-sitename>duck_math</b> يحلّ مسائل رياضيات الثالث الإعدادي وفق المنهاج السوري بمحرّك دقيق يعمل داخل متصفحك: جملة معادلتين، حدوديات، دوال، أشعة، sin_cos_tan، طاليس وفيثاغورس، مجسمات وإحصاء. استعمل أي حرف تريده مجهولًا: س، ص، ع، x، y، n…</p>
+    <div class="hero-cta reveal" style="--d:190ms">
+      <a class="btn btn-primary" href="#solve">حلّ مسألة الآن</a>
+      <a class="btn btn-line" href="#curriculum">تصفّح المنهاج</a>
+    </div>
+    <div class="chips reveal" id="heroChips" style="--d:240ms"></div>
+    <div class="hero-stats reveal" style="--d:300ms">
+      <div><b class="mono" id="heroSolved">0</b><span>مسألة حللتها</span></div>
+      <div><b class="mono" id="heroTopics">20</b><span>نوع مسائل</span></div>
+      <div><b class="mono" id="heroStreak">0</b><span>سلسلة صحيحة</span></div>
+      <div><b class="mono">100%</b><span>تحقّق آلي</span></div>
+    </div>
+  </div>
+  <div class="hero-spec reveal" style="--d:160ms">
+    <div class="specimen" id="specimen" data-par="0.03">
+      <span class="cm tl"></span><span class="cm tr"></span><span class="cm bl"></span><span class="cm br"></span>
+      <div class="spec-top"><span class="tag" id="demoTag">—</span><span class="mono spec-no">FIG.01</span></div>
+      <div class="spec-body" id="heroDemo"></div>
+    </div>
+    <p class="spec-cap mono">LIVE SPECIMEN — يتبدّل كل 5 ثوانٍ</p>
+  </div>
+</section>
+
+<!-- ============ 01 SOLVER ============ -->
+<section class="sec" id="solve" style="--accent:var(--red)">
+  <div class="sec-head reveal">
+    <span class="sec-num mono">01</span>
+    <div><p class="kicker">SOLVER</p><h2>حلّ بخطوات</h2>
+    <p class="sec-p">اكتب المسألة بالعربية أو بالرموز. المحرّك يتعرّف على نوعها، يعرض كل خطوة مع سببها، ثم يتحقّق من الناتج. المجهول بأي حرف تختاره.</p></div>
+  </div>
+  <div class="solve-grid">
+    <aside class="panel input-panel reveal">
+      <div class="lbl"><span>المسألة</span><span class="mono dim">Ctrl+Enter</span></div>
+      <textarea id="problemInput" class="field" rows="3" spellcheck="false" placeholder="مثال: 3س + 7 = 22&#10;أو: 2س + 3ص = 12 ؛ س - ص = 1&#10;أو: sin_cos_tan مثلث قائم في A: AB=3, AC=4, BC=5" aria-label="نص المسألة"></textarea>
+      <div class="keypad" id="keypad"></div>
+      <div class="lbl"><span>قوالب جاهزة</span></div>
+      <div class="chips" id="tplChips"></div>
+      <div class="row">
+        <button class="btn btn-primary" id="solveBtn">حلّ بخطوات</button>
+        <button class="btn btn-line" id="clearBtn">مسح</button>
+      </div>
+      <p class="hint">يقبل ١٢٣ و123، وأي حرف للمجهول (س، ص، ع، x، y، n…)، و٪ للنسبة، و√ للجذر، و^ للأس، وsin/cos/tan بالدرجات. لفصل معادلتَي الجملة استعمل ؛ أو سطرًا جديدًا.</p>
+      <div class="mini-stats">
+        <div><b class="mono" id="statSolved">0</b><span>مسألة</span></div>
+        <div><b class="mono" id="statStreak">0</b><span>سلسلة</span></div>
+        <div><b class="mono" id="statSaved">0</b><span>في الدفتر</span></div>
+      </div>
+    </aside>
+    <div class="panel steps-panel reveal" id="stepsPanel" style="--d:80ms"></div>
+  </div>
+</section>
+
+<!-- ============ 02 LAB ============ -->
+<section class="sec" id="lab" style="--accent:var(--blue)">
+  <div class="sec-head reveal">
+    <span class="sec-num mono">02</span>
+    <div><p class="kicker">GRAPH LAB</p><h2>مختبر الدوال</h2>
+    <p class="sec-p">حرّك المعاملات فيتغيّر المنحنى لحظيًا: خطية، تآلفية، مربع، مقلوب، أسية، جيبية. اسحب لتحريك المعلم، وكبّر بالعجلة أو بإصبعين.</p></div>
+  </div>
+  <div class="lab-grid">
+    <div class="plot-wrap reveal">
+      <canvas id="plot"></canvas>
+      <div class="plot-hud">
+        <span class="hud-pill mono" id="hudCoord">x: 0.00 · y: 0.00</span>
+        <span class="hud-pill mono" id="hudZoom">44 px/unit</span>
+      </div>
+      <div class="plot-eq"><div class="math" id="labEq"></div></div>
+    </div>
+    <div class="panel ctrl reveal" style="--d:80ms">
+      <h4>الدالة</h4>
+      <div class="cg"><label for="fnType">النوع</label>
+        <select id="fnType" class="field">
+          <option value="linear">خطية: أ·س</option>
+          <option value="affine" selected>تآلفية: أ·س + ب</option>
+          <option value="quad">مربع: أ·س² + ب·س + ج</option>
+          <option value="recip">مقلوب: أ ÷ (س − ب) + ج</option>
+          <option value="abs">قيمة مطلقة: أ·|س − ب| + ج</option>
+          <option value="exp">أسية: أ·2^(ب·س) + ج</option>
+          <option value="sine">جيبية: أ·sin(ب·س + ج)</option>
+        </select></div>
+      <div class="cg"><label for="pa">أ <b class="mono" id="pa-v">1.0</b></label><input type="range" id="pa" min="-5" max="5" step="0.1" value="1"></div>
+      <div class="cg"><label for="pb">ب <b class="mono" id="pb-v">2.0</b></label><input type="range" id="pb" min="-6" max="6" step="0.1" value="2"></div>
+      <div class="cg"><label for="pc">ج <b class="mono" id="pc-v">0.0</b></label><input type="range" id="pc" min="-6" max="6" step="0.1" value="0"></div>
+      <h4>العرض</h4>
+      <div class="cg"><label for="zoom">التكبير <b class="mono" id="zoom-v">44</b></label><input type="range" id="zoom" min="12" max="140" step="1" value="44"></div>
+      <div class="cg"><label for="thick">سماكة الخط <b class="mono" id="thick-v">3.0</b></label><input type="range" id="thick" min="1" max="8" step="0.5" value="3"></div>
+      <div class="cg"><label for="speed">سرعة النقطة <b class="mono" id="speed-v">1.0</b></label><input type="range" id="speed" min="0" max="3" step="0.1" value="1"></div>
+      <div class="cg"><label for="curveColor">لون المنحنى</label>
+        <select id="curveColor" class="field">
+          <option value="red" selected>أحمر</option><option value="blue">أزرق</option>
+          <option value="green">أخضر</option><option value="ink">أسود</option>
+          <option value="amber">كهرماني</option><option value="magenta">أرجواني</option>
+        </select></div>
+      <div class="toggles">
+        <button class="tg on" data-tg="grid"><i></i>الشبكة</button>
+        <button class="tg on" data-tg="axes"><i></i>المعلم</button>
+        <button class="tg on" data-tg="points"><i></i>نقاط مهمة</button>
+        <button class="tg" data-tg="fill"><i></i>تعبئة</button>
+        <button class="tg on" data-tg="animate"><i></i>حركة</button>
+      </div>
+      <div class="readouts" id="labInfo"></div>
+      <div class="ctrl-actions">
+        <button class="btn btn-line btn-sm" id="labReset">تصفير</button>
+        <button class="btn btn-line btn-sm" id="labRandom">عشوائي</button>
+        <button class="btn btn-primary btn-sm wide" id="labExport">تصدير PNG</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 CURRICULUM ============ -->
+<section class="sec" id="curriculum" style="--accent:var(--green)">
+  <div class="sec-head reveal">
+    <span class="sec-num mono">03</span>
+    <div><p class="kicker">SYRIAN CURRICULUM</p><h2>منهاج الثالث الإعدادي</h2>
+    <p class="sec-p">دروس الصف الثالث الإعدادي (التاسع) — المنهاج السوري، موزّعة على ثلاث وحدات. جرّب أي مثال مباشرة في المحرّك؛ ثلاثة تمارين صحيحة من درسٍ ما تعني إتقانه.</p></div>
+  </div>
+  <div class="tabs" id="unitTabs"></div>
+  <div class="grade-prog"><span id="progLabel">إتقان الوحدة</span><div class="bar"><i id="progBar"></i></div><b class="mono" id="progPct">0%</b></div>
+  <div class="curr-bar">
+    <div class="search field-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="currSearch" placeholder="ابحث في الدروس… مثال: طاليس، جملة معادلتين، sin_cos_tan" aria-label="بحث في الدروس"></div>
+    <span class="tag mono" id="currCount">0</span>
+  </div>
+  <div class="curr-list" id="currList"></div>
+</section>
+
+<!-- ============ 04 NOTEBOOK ============ -->
+<section class="sec" id="notebook" style="--accent:var(--amber)">
+  <div class="sec-head reveal">
+    <span class="sec-num mono">04</span>
+    <div><p class="kicker">RECORDS</p><h2>دفتر الحلول</h2>
+    <p class="sec-p">يُحفظ على جهازك فقط. ابحث، رتّب بالسحب، أضف ملاحظات، واسترجع ما حذفت.</p></div>
+  </div>
+  <div class="views chips" id="nbViews"></div>
+  <div class="view-name" id="viewName">
+    <input id="viewNameInput" class="field" placeholder="اسم العرض المحفوظ…" aria-label="اسم العرض">
+    <button class="btn btn-primary btn-sm" id="viewNameOk">حفظ</button>
+    <button class="btn btn-line btn-sm" id="viewNameNo">إلغاء</button>
+  </div>
+  <div class="nb-toolbar">
+    <div class="search field-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="nbSearch" placeholder="ابحث في دفترك…" aria-label="بحث في الدفتر"></div>
+    <select id="nbFilter" class="field" aria-label="تصفية"></select>
+    <select id="nbSort" class="field" aria-label="ترتيب">
+      <option value="manual">ترتيبي الخاص</option><option value="new">الأحدث أولًا</option>
+      <option value="old">الأقدم أولًا</option><option value="topic">حسب النوع</option><option value="fav">المفضّلة أولًا</option>
+    </select>
+    <button class="btn btn-line btn-sm" id="selectAll">تحديد الكل</button>
+    <button class="btn btn-line btn-sm" id="saveViewBtn">حفظ العرض</button>
+    <button class="btn btn-line btn-sm" id="nbExport">تصدير JSON</button>
+  </div>
+  <div class="nb-list" id="nbList"></div>
+</section>
+
+<!-- ============ 05 ASSISTANT ============ -->
+<section class="sec" id="assistant" style="--accent:var(--magenta)">
+  <div class="sec-head reveal">
+    <span class="sec-num mono">05</span>
+    <div><p class="kicker">ASSISTANT</p><h2>المساعد</h2>
+    <p class="sec-p">يشرح «لماذا» خلف كل خطوة. الأرقام النهائية تأتي دائمًا من المحرّك، لا من نموذج لغوي.</p></div>
+  </div>
+  <div class="ai-grid">
+    <div class="panel ai-side reveal">
+      <div class="seg" role="tablist" aria-label="وضع المساعد">
+        <button data-mode="simple" class="on">مبسّط</button>
+        <button data-mode="cloud">سحابي</button>
+        <button data-mode="local">محلي</button>
+      </div>
+      <p class="ai-status mono" id="aiStatus">SIMPLE — READY</p>
+      <p class="ai-note" id="aiNote">قاعدة معرفة مكتوبة لمنهاج الثالث الإعدادي السوري. تعمل فورًا، بلا إنترنت وبلا حساب.</p>
+      <div id="localControls" hidden>
+        <div class="cg"><label for="modelSelect">النموذج</label>
+          <select id="modelSelect" class="field">
+            <option value="Qwen2.5-0.5B-Instruct-q4f16_1-MLC">Qwen2.5 · 0.5B (خفيف)</option>
+            <option value="Qwen2.5-0.5B-Instruct-q4f32_1-MLC">Qwen2.5 · 0.5B (توافق أوسع)</option>
+          </select></div>
+        <ul class="guard" id="guardList"></ul>
+        <div class="row">
+          <button class="btn btn-primary btn-sm" id="loadAiBtn" disabled>تنزيل وتشغيل ≈146MB</button>
+          <button class="btn btn-line btn-sm" id="recheckBtn">إعادة الفحص</button>
+        </div>
+        <div class="prog" id="aiProg"><i id="aiBar"></i></div>
+        <p class="mono dim" id="aiProgTxt"></p>
+        <button class="btn btn-line btn-sm wide" id="unloadAiBtn" hidden>تفريغ الذاكرة</button>
+      </div>
+      <div id="cloudControls" hidden>
+        <p class="ai-note">يعبر Puter.js: بلا مفاتيح ولا خادم. قد تُفتح نافذة تسجيل دخول Puter عند أول سؤال، وكل مستخدم يغطّي استخدامه من حسابه.</p>
+      </div>
+    </div>
+    <div class="panel chat reveal" style="--d:80ms">
+      <div class="chat-log" id="chatLog"></div>
+      <div class="chat-foot">
+        <div class="chips" id="aiChips"></div>
+        <div class="chat-input">
+          <textarea id="chatInput" class="field" rows="1" placeholder="اسأل: لماذا نعكس الإشارة؟ أو اكتب مسألة مثل 2ع+5=13" aria-label="رسالتك"></textarea>
+          <button class="btn btn-line stop" id="stopBtn" hidden aria-label="إيقاف">■</button>
+          <button class="send" id="chatSend" aria-label="إرسال">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 3L3 10.5l7 3 3 7z"/><path d="M21 3l-11 11"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ ABOUT (مخفي — لا يظهر في الشاشة الرئيسية) ============ -->
+<main id="aboutView" hidden>
+  <section class="sec about-sec" id="about" style="--accent:var(--blue)">
+    <div class="sec-head in">
+      <span class="sec-num mono">06</span>
+      <div><p class="kicker">ABOUT</p><h2>عن <span data-sitename>duck_math</span></h2>
+      <p class="sec-p">صفحة تعريفية بالموقع وفريق تطويره.</p></div>
+    </div>
+    <div class="about-grid">
+      <div class="panel about-main">
+        <div class="about-mark" data-duck-big></div>
+        <h3>ما هو هذا الموقع؟</h3>
+        <p id="aboutDesc">duck_math موقع تعليمي عربي مفتوح لرياضيات الصف الثالث الإعدادي وفق المنهاج السوري. يحلّ المسائل بمحرّك رياضي حتمي مكتوب بجافاسكربت، ويعرض كل خطوة مع سببها ثم يتحقّق من الناتج بالتعويض. لا يعتمد على نموذج لغوي في الحساب، لذلك لا يمكن أن يعطي نتيجة رقمية خاطئة. يعمل بالكامل داخل متصفحك: لا خادم، لا حساب، لا تتبّع، ويظل يعمل على الشبكات الضعيفة والأجهزة القديمة.</p>
+        <h3>كيف يعمل؟</h3>
+        <ul class="about-list">
+          <li><b>محرّك حتمي:</b> كسور مضبوطة، محلّل نحوي، كثيرات حدود، وجمل معادلات — كل نتيجة قابلة للتحقّق.</li>
+          <li><b>أي مجهول:</b> س، ص، ع، x، y، n… المحرّك يتعرّف على الحرف الذي تكتبه ويستعمله في الحل والعرض.</li>
+          <li><b>خصوصية كاملة:</b> دفترك وإحصاءاتك محفوظة في متصفحك وحده، ولا تغادر جهازك.</li>
+          <li><b>مجاني بالكامل:</b> ملفات ثابتة تُستضاف على GitHub Pages، بلا مفاتيح ولا فواتير.</li>
+          <li><b>تحكم عن بُعد:</b> اسم الموقع وأيقونته وأسماء المطوّرين تُدار عبر بوت تلغرام ينشر ملف الإعدادات مباشرة.</li>
+        </ul>
+        <h3>التقنيات</h3>
+        <div class="chips tech-chips">
+          <span class="chip">HTML</span><span class="chip">CSS Grid</span><span class="chip">JavaScript</span>
+          <span class="chip">Canvas 2D</span><span class="chip">Service Worker</span><span class="chip">Telegram Bot API</span>
+          <span class="chip">GitHub Pages</span><span class="chip">WebLLM (اختياري)</span>
+        </div>
+      </div>
+      <aside class="panel about-side">
+        <h3>فريق التطوير</h3>
+        <div id="devList" class="dev-list"></div>
+        <p class="about-note">تُدار هذه القائمة عبر بوت تلغرام: إضافة، حذف، أو استبدال.</p>
+        <div class="about-meta">
+          <div><span>آخر تحديث للإعدادات</span><b class="mono" id="cfgUpdated">—</b></div>
+          <div><span>إصدار الإعدادات</span><b class="mono" id="cfgVersion">—</b></div>
+          <div><span>مصدر الإعدادات</span><b class="mono" id="cfgSource">—</b></div>
+        </div>
+        <a class="btn btn-primary wide" href="#home">العودة إلى الموقع</a>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <div>
+      <a class="brand" href="#home"><span class="brand-mark" data-duck></span><span class="brand-t"><b data-sitename>duck_math</b></span></a>
+      <p class="foot-p">يعمل بالكامل داخل متصفحك. لا حسابات، لا تتبّع، لا خادم.</p>
+    </div>
+    <nav class="foot-links" aria-label="روابط">
+      <a href="#solve">حلّ بخطوات</a><a href="#lab">المختبر</a><a href="#curriculum">المنهاج</a>
+      <a href="#notebook">الدفتر</a><a href="#assistant">المساعد</a>
+      <a href="#about" class="foot-about">عن الموقع والمطوّرين</a>
+    </nav>
+    <div>
+      <p class="foot-p"><kbd>Ctrl</kbd>+<kbd>Enter</kbd> حلّ · <kbd>/</kbd> تركيز · <kbd>Esc</kbd> إغلاق</p>
+      <p class="mono dim colophon"><span data-sitename>duck_math</span> · SWISS GRID · <span id="year">2026</span></p>
+    </div>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+  <div class="drawer-head"><h3 id="drawerTitle">تفاصيل الحل</h3>
+    <button class="icon-btn" id="drawerClose" aria-label="إغلاق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot" id="drawerFoot"></div>
+</aside>
+
+<div class="bulk-bar" id="bulkBar">
+  <span><b class="mono" id="bulkCount">0</b> محدّد</span>
+  <button class="btn btn-danger btn-sm" id="bulkDelete">حذف</button>
+  <button class="btn btn-line btn-sm" id="bulkFav">المفضّلة</button>
+  <button class="btn btn-line btn-sm" id="bulkClear">إلغاء</button>
+</div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<script defer src="js/utils.js"></script>
+<script defer src="js/math.js"></script>
+<script defer src="js/solvers.js"></script>
+<script defer src="js/data.js"></script>
+<script defer src="js/site.js"></script>
+<script defer src="js/solver-ui.js"></script>
+<script defer src="js/curriculum.js"></script>
+<script defer src="js/lab.js"></script>
+<script defer src="js/notebook.js"></script>
+<script defer src="js/assistant.js"></script>
+<script defer src="js/app.js"></script>
+</body>
+</html>

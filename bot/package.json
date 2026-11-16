@@ -1,0 +1,10 @@
+{
+  "name": "duck-math-telegram-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "بوت تلغرام للتحكم باسم موقع duck_math وأيقونته وأسماء المطوّرين عبر config.json على GitHub",
+  "main": "bot.js",
+  "type": "commonjs",
+  "engines": { "node": ">=18" },
+  "scripts": { "start": "node bot.js" }
+}
