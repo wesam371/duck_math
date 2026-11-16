@@ -1,5 +1,5 @@
 /* sw.js */
-var VERSION='duckmath-v4';
+var VERSION='duckmath-v5';
 var SHELL=['./','./index.html','./config.json','./css/base.css','./css/layout.css','./css/components.css',
   './js/utils.js','./js/math.js','./js/solvers.js','./js/data.js','./js/site.js','./js/solver-ui.js',
   './js/curriculum.js','./js/lab.js','./js/notebook.js','./js/assistant.js','./js/app.js'];
@@ -26,13 +26,10 @@ self.addEventListener('fetch',function(e){
       }).catch(function(){return caches.match(req)}));
       return;
     }
-    e.respondWith(caches.match(req).then(function(cached){
-      var net=fetch(req).then(function(res){
-        if(res&&res.ok)caches.open(VERSION).then(function(c){c.put(req,res.clone())});
-        return res;
-      }).catch(function(){return cached});
-      return cached||net;
-    }));
+    e.respondWith(fetch(req).then(function(res){
+      if(res&&res.ok)caches.open(VERSION).then(function(c){c.put(req,res.clone())});
+      return res;
+    }).catch(function(){return caches.match(req)}));
     return;
   }
   if(url.hostname==='fonts.googleapis.com'||url.hostname==='fonts.gstatic.com'){
