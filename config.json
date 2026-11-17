@@ -1,8 +1,8 @@
 {
-  "name": "duck_math",
+  "name": "(beta)duck_math",
   "tagline": "رياضيات الثالث الإعدادي — خطوة بخطوة",
   "icon": {
-    "kind": "duck",
+    "kind": "compass",
     "fill": "#E3270E",
     "bg": "#FBFBF8",
     "eye": "#FBFBF8",
@@ -43,6 +43,6 @@
     "contact": ""
   },
   "schedules": [],
-  "version": 18,
-  "updatedAt": "2026-11-17T13:46:34.021Z"
+  "version": 19,
+  "updatedAt": "2026-11-17T13:52:30.392Z"
 }
