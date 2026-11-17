@@ -2,7 +2,7 @@
   "name": "duck_math",
   "tagline": "رياضيات الثالث الإعدادي — خطوة بخطوة",
   "icon": {
-    "kind": "compass",
+    "kind": "duck",
     "fill": "#E3270E",
     "bg": "#FBFBF8",
     "eye": "#FBFBF8",
@@ -37,6 +37,6 @@
     "contact": ""
   },
   "schedules": [],
-  "version": 16,
-  "updatedAt": "2026-11-17T13:44:00.355Z"
+  "version": 17,
+  "updatedAt": "2026-11-17T13:45:17.056Z"
 }
