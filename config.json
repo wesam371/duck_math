@@ -3,9 +3,9 @@
   "badge": "MATH·G9·SY",
   "tagline": "رياضيات الثالث الإعدادي — خطوة بخطوة",
   "icon": {
-    "kind": "compass",
-    "fill": "#E3270E",
-    "bg": "#FBFBF8",
+    "kind": "sigma",
+    "fill": "#1d3fcc",
+    "bg": "#fbfbf8",
     "eye": "#FBFBF8",
     "custom": null,
     "fit": "contain",
@@ -16,13 +16,13 @@
     "tintColor": "#101010"
   },
   "brand": {
-    "accent": "#E3270E",
-    "paper": "#FBFBF8",
-    "ink": "#101010",
+    "accent": "#1d3fcc",
+    "paper": "#f6f6ee",
+    "ink": "#095812",
     "mark": 32,
     "rule": 2,
-    "radius": 0,
-    "fontScale": 100,
+    "radius": 4,
+    "fontScale": 98,
     "shadow": true,
     "grid": true,
     "wordmark": true,
@@ -174,7 +174,7 @@
   ],
   "solver": {
     "label": "المسألة",
-    "placeholder": "مثال: 3س + 7 = 22\nأو: 2x + 3y = 12 ؛ س - ص = 1",
+    "placeholder": "مثال: 3x + 7 = 22\nأو: 2x + 3y = 12 ؛y - x = 1",
     "hint": "يقبل ١٢٣ و123، وأي حرف للمجهول، و٪ للنسبة، و√ للجذر، و^ للأس. افصل معادلتَي الجملة بـ ؛",
     "solveBtn": "الحل",
     "clearBtn": "مسح",
@@ -685,6 +685,6 @@
     "contact": ""
   },
   "schedules": [],
-  "version": 119,
-  "updatedAt": "2026-11-18T16:41:18.007Z"
+  "version": 154,
+  "updatedAt": "2026-11-18T19:50:47.524Z"
 }
