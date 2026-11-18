@@ -1,5 +1,5 @@
 /* sw.js */
-var VERSION='duckmath-v5';
+var VERSION='duckmath-v6';
 var SHELL=['./','./index.html','./config.json','./css/base.css','./css/layout.css','./css/components.css',
   './js/utils.js','./js/math.js','./js/solvers.js','./js/data.js','./js/site.js','./js/solver-ui.js',
   './js/curriculum.js','./js/lab.js','./js/notebook.js','./js/assistant.js','./js/app.js'];
