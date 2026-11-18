@@ -18,7 +18,7 @@
   "brand": {
     "accent": "#1d3fcc",
     "paper": "#f6f6ee",
-    "ink": "#095812",
+    "ink": "#262626",
     "mark": 32,
     "rule": 2,
     "radius": 4,
@@ -685,6 +685,6 @@
     "contact": ""
   },
   "schedules": [],
-  "version": 154,
-  "updatedAt": "2026-11-18T19:50:47.524Z"
+  "version": 157,
+  "updatedAt": "2026-11-18T19:58:39.994Z"
 }
